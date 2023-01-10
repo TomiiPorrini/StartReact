@@ -1,24 +1,26 @@
 import React from 'react'
-import { Conected } from '../models/Conected'
+import PropTypes from 'prop-types'
 import { Contact } from '../models/Contact'
 import CompB from './CompB'
 
-const CompA = () => {
-    
-    const contacto = new Contact('Tomas', 'Porrini', 'akjsdn@ansjd.com', true)
-    console.log(contacto)
-
+const CompA = ({contact}) => {
+  console.log(contact)
   return (
     <div>
         <div>
-            <h1>Su Contacto: </h1>
+            <h2>Nombre: {contact.name}</h2>
+            <h3>Apellido: {contact.surname}</h3>
+            <h4>email: {contact.email}</h4>
+            <CompB estado={true}></CompB>
         </div>
-    
-        {/* Renderización del componente B */}
-        <CompB contact = {contacto}></CompB>
     </div>
     
   )
 }
+
+CompA.propTypes = {
+  contact: PropTypes.instanceOf(Contact)
+}
+
 
 export default CompA;

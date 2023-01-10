@@ -1,29 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import {Contact} from '../models/Contact'
 
-function CompB({contact}) {
-  
+function CompB(estado) {
+  // const [state, setstate] = useState(initialState);
+  const [conectado, setConectado] = useState(estado);
+
   return (
     <div>
-      <h2>
-            Nombre: {contact.name}
-            </h2>
-            <h3>
-            Apellido: {contact.surname}
-            </h3>
-            <h4>
-            email: {contact.email}
-            </h4>
-            <h5>
-                Conexión: {contact.conected ? 'Contacto En Linea' : 'Contacto No Disponible'}
-            </h5>
+        <h5>Conexión: {conectado ? 'Contacto En Linea' : 'Contacto No Disponible'}</h5>
+        <button onClick={() => setConectado(!conectado)}>{conectado ? 'Cambiar a Desconectado' : 'Cambiar a Conectado'}</button>
     </div>
   )
 }
 
 CompB.propTypes = {
-    contact: PropTypes.instanceOf(Contact)
+    estado: PropTypes.bool,
 }
 
 export default CompB;
